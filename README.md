@@ -1,4 +1,4 @@
-# math2svg
+# math2img
 
 Convert mathematical expressions into images.
 
@@ -7,7 +7,7 @@ Convert mathematical expressions into images.
 ### with Cargo
 
 ```bash
-cargo install math2svg
+cargo install math2img
 ```
 
 ## Usage
