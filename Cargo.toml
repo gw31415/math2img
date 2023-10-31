@@ -1,6 +1,6 @@
 [package]
 name = "math2img"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 authors = ["gw31415 <git@amas.dev>"]
 description = "Convert mathematical expressions into images"
