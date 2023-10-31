@@ -99,17 +99,18 @@ fn main() {
 
     let data = {
         // Create Svg
-        let svg_data = Converter::new().convert_to_svg(
-            {
-                let Some(math) = args.get_math() else {
-                // Terminates when input is interrupted.
-                exit(1);
-            };
-                math
-            }
-            .as_ref(),
-        )
-        .into_bytes();
+        let svg_data = Converter::new()
+            .convert_to_svg(
+                {
+                    let Some(math) = args.get_math() else {
+                        // Terminates when input is interrupted.
+                        exit(1);
+                    };
+                    math
+                }
+                .as_ref(),
+            )
+            .into_bytes();
         if !args.is_png() {
             // Substitute Svg.
             svg_data
