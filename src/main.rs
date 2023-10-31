@@ -7,7 +7,7 @@ use std::{
 use tiny_skia::IntSize;
 
 use clap::Parser;
-use mathjax_svg::{Converter, Error};
+use mathjax_svg::{convert_to_svg, Error};
 use resvg::usvg::{self, Tree};
 use usvg::{fontdb, TreeParsing, TreeTextToPath};
 
@@ -55,8 +55,12 @@ mod args {
         /// Whether the output file format is PNG or not
         pub fn is_png(&self) -> bool {
             self.png || {
-                let Some(output) = &self.output else { return false };
-                let Some(ext) = output.extension() else { return false };
+                let Some(output) = &self.output else {
+                    return false;
+                };
+                let Some(ext) = output.extension() else {
+                    return false;
+                };
                 ext == "png"
             }
         }
@@ -66,7 +70,9 @@ mod args {
             Some(if self.math.is_some() {
                 Cow::Borrowed(unsafe { self.math.as_ref().unwrap_unchecked() })
             } else {
-                let Ok(mut rl) = rustyline::DefaultEditor::new() else { return None; };
+                let Ok(mut rl) = rustyline::DefaultEditor::new() else {
+                    return None;
+                };
                 let mut string = String::new();
                 loop {
                     match rl.readline("> ") {
@@ -106,18 +112,17 @@ fn main_() -> Result<(), Error> {
 
     let data = {
         // Create Svg
-        let svg_data = Converter::new()
-            .convert_to_svg(
-                {
-                    let Some(math) = args.get_math() else {
-                        // Terminates when input is interrupted.
-                        exit(1);
-                    };
-                    math
-                }
-                .as_ref(),
-            )?
-            .into_bytes();
+        let svg_data = convert_to_svg(
+            {
+                let Some(math) = args.get_math() else {
+                    // Terminates when input is interrupted.
+                    exit(1);
+                };
+                math
+            }
+            .as_ref(),
+        )?
+        .into_bytes();
         if !args.is_png() {
             // Substitute Svg.
             svg_data
