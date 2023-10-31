@@ -5,7 +5,9 @@ edition = "2021"
 authors = ["gw31415 <git@amas.dev>"]
 description = "Convert mathematical expressions into images"
 license = "Apache-2.0"
-
+repository = "https://github.com/gw31415/math2img"
+categories = ["command-line-interface"]
+keywords = ["cli", "svg", "tex", "png", "latex", "mathjax"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
