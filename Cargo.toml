@@ -11,7 +11,7 @@ license = "Apache-2.0"
 [dependencies]
 clap = { version = "4.4.7", features = ["derive"] }
 clap_complete = "4.4.4"
-mathjax_svg = "1.0.1"
+mathjax_svg = "2.0.0"
 resvg = "0.36.0"
 rustyline = "12.0.0"
 tiny-skia = "0.11.2"

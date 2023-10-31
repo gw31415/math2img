@@ -7,7 +7,7 @@ use std::{
 use tiny_skia::IntSize;
 
 use clap::Parser;
-use mathjax_svg::Converter;
+use mathjax_svg::{Converter, Error};
 use resvg::usvg::{self, Tree};
 use usvg::{fontdb, TreeParsing, TreeTextToPath};
 
@@ -89,12 +89,19 @@ mod args {
 }
 
 fn main() {
+    if let Err(err) = main_() {
+        eprintln!("Error: {err}");
+        exit(1);
+    }
+}
+
+fn main_() -> Result<(), Error> {
     let args = args::Args::parse();
 
     // Shell completion
     if let Some(shell) = args.completion {
         shell_completion(shell);
-        return;
+        return Ok(());
     }
 
     let data = {
@@ -109,7 +116,7 @@ fn main() {
                     math
                 }
                 .as_ref(),
-            )
+            )?
             .into_bytes();
         if !args.is_png() {
             // Substitute Svg.
@@ -167,6 +174,7 @@ fn main() {
     } else {
         write_to!(io::stdout());
     }
+    Ok(())
 }
 
 #[cold]
