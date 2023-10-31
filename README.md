@@ -2,6 +2,8 @@
 
 Convert mathematical expressions into images.
 
+![output](https://github.com/gw31415/math2img/assets/24710985/01f96e75-2db5-42e2-854c-960a0587ca59)
+
 ## Installation
 
 ### with Cargo
