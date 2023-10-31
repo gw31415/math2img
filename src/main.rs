@@ -14,6 +14,7 @@ use usvg::{fontdb, TreeParsing, TreeTextToPath};
 mod args {
     use clap::Parser;
     use clap_complete::Shell;
+    use rustyline::error::ReadlineError;
     use std::{borrow::Cow, path::PathBuf};
 
     /// Convert mathematical expressions into images
@@ -66,7 +67,21 @@ mod args {
                 Cow::Borrowed(unsafe { self.math.as_ref().unwrap_unchecked() })
             } else {
                 let Ok(mut rl) = rustyline::DefaultEditor::new() else { return None; };
-                let Ok(string) = rl.readline("> ") else { return None; };
+                let mut string = String::new();
+                loop {
+                    match rl.readline("> ") {
+                        Ok(line) => {
+                            string.push_str(&line);
+                            string.push('\n');
+                        }
+                        Err(ReadlineError::Eof) => {
+                            break;
+                        }
+                        Err(_) => {
+                            return None;
+                        }
+                    }
+                }
                 Cow::Owned(string)
             })
         }
