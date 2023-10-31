@@ -7,7 +7,7 @@ use std::{
 use tiny_skia::IntSize;
 
 use clap::Parser;
-use mathjax_svg::convert_to_svg;
+use mathjax_svg::Converter;
 use resvg::usvg::{self, Tree};
 use usvg::{fontdb, TreeParsing, TreeTextToPath};
 
@@ -99,7 +99,7 @@ fn main() {
 
     let data = {
         // Create Svg
-        let svg_data = convert_to_svg(
+        let svg_data = Converter::new().convert_to_svg(
             {
                 let Some(math) = args.get_math() else {
                 // Terminates when input is interrupted.

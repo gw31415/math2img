@@ -358,7 +358,7 @@ checksum = "b5e6163cb8c49088c2c36f57875e58ccd8c87c7427f7fbd50ea6710b2f3f2e8f"
 
 [[package]]
 name = "math2img"
-version = "0.1.0"
+version = "0.1.2"
 dependencies = [
  "clap",
  "clap_complete",
@@ -370,9 +370,9 @@ dependencies = [
 
 [[package]]
 name = "mathjax_svg"
-version = "0.1.0"
+version = "1.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "963478723f03ebf4a4e5e7f4541a056bb1821799717f43ced65c0a5807018f23"
+checksum = "948a0eec22e681efee5187aa6d5f354682ee7fde7962cc86a1a2c7a1aa1b2ba9"
 dependencies = [
  "rusty_v8",
 ]
