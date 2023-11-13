@@ -2,7 +2,7 @@
 
 [![Crates.io](https://img.shields.io/crates/v/math2img?style=flat-square)](https://crates.io/crates/math2img)
 [![Crates.io](https://img.shields.io/crates/d/math2img?style=flat-square)](https://crates.io/crates/math2img)
-[![License](https://img.shields.io/badge/license-Apache%202.0-blue?style=flat-square)](LICENSE-APACHE)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue?style=flat-square)](LICENSE)
 
 Convert mathematical expressions into images.
 
